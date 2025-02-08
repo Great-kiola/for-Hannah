@@ -20,8 +20,8 @@ body {
 
 .envelope-front {
     position: absolute;
-    width: 100%;
-    height: 100%;
+    width: 500px;
+    height: 300px;
     background: #e74c3c;
     border-radius: 10px;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
