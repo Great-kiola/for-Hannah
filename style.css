@@ -1,94 +1,118 @@
-body {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Mea+Culpa&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+body,html{
+    margin: 0;
+    padding: 0;
+}
+
+body{
     font-family: 'Poppins', sans-serif;
     background: #fffff0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
-    overflow: hidden;
+    overflow: auto;
 }
 
-/* Envelope Styles */
-.envelope {
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     position: relative;
-    width: 300px;
-    height: 200px;
+    /* justify-content: center; */
+}
+
+.card{
+    animation: cardPop 1s ease;
+}
+
+.card-front, .card{
+    position: relative;
+    width: 650px;
+    height: 400px;
+    background-color: #e74c3c;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     cursor: pointer;
-    transition: transform 0.6s;
 }
 
-.envelope-front {
+/* .card-front{
+    animation: up 3s linear infinite;
+} */
+
+.card-front img{
     position: absolute;
-    width: 500px;
-    height: 300px;
-    background: #e74c3c;
-    border-radius: 10px;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Caveat';
-    font-weight: 700;
-    font-size: 2em;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+}
+
+
+
+/* Text */
+h1, h2{
+    position: absolute;
+    font-family: "Space Mono";
+    color: #fffff0;
+}
+
+.container h2{
+    font-size: 1.4em;
+    right: -5px;
+    top: -15px;
+}
+
+h2{
+    position: absolute;
+    bottom: 120px;
+}
+
+.hide{
+    display: none !important;
+}
+
+span{
+    font-family: "Mea Culpa";
+    font-size: 6em;
     color: white;
-    transform-origin: bottom;
-    transition: all 0.6s;
+    font-weight: 500;
+    /* font-size: ; */
 }
 
-.envelope.open .envelope-front {
-    transform: rotateX(180deg) translateY(-50%);
-    opacity: 0;
-}
 
-/* Stamp Styles */
-.stamp {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 20px;
-    height: 20px;
-    background-image: url('st.jpg');
-    /* Add your image here */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+/* Buttons */
+.buttons {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #999;
-    font-size: 0.8em;
-    text-align: center;
-    padding: 5px;
-}
-
-.stamp::after {
-    position: absolute;
-    bottom: -20px;
-    font-size: 0.6em;
-    color: #999;
-}
-
-/* Card Styles */
-.card {
-    position: absolute;
-    width: 90%;
-    height: 90%;
-    background: #fff0f3;
-    border-radius: 8px;
-    padding: 20px;
-    text-align: center;
-    transform: scale(0);
-    transition: all 0.6s;
-    display: flex;
-    align-items: center;
+    gap: 20px;
     justify-content: center;
 }
 
-.envelope.open .card {
-    transform: scale(1);
-    animation: cardPop 1s forwards;
+button {
+    padding: 12px 25px;
+    font-size: 1em;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
+
+#yesBtn{
+    font-family: "Inter";
+    background-color: white;
+    color: black;
+}
+
+#noBtn {
+    font-family: "Space Mono";
+    background-color: red;
+    color: white;
+    transition: all 0.5s ease;
+}
+
 
 @keyframes cardPop {
     0% {
@@ -104,131 +128,12 @@ body {
     }
 }
 
-/* Proposal Content Styles */
-.container {
-    padding: 20px;
-    background: #ffb6c1;
-    text-align: left;
-    border-radius: 15px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    transform: scale(0);
-    animation: popOut 0.5s 0.6s forwards;
-}
 
-@keyframes popOut {
-    from {
-        transform: scale(0);
+@keyframes up {
+    0%, 100% {
+      transform: translateY(0);
     }
-
-    to {
-        transform: scale(1);
-    }
-}
-
-h1 {
-    color: #e74c3c;
-    font-size: 2.5em;
-    font-weight: 1000px;
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 1.3em;
-    color: #333;
-    margin-bottom: 30px;
-}
-
-.buttons {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-}
-
-button {
-    padding: 12px 25px;
-    font-size: 1.1em;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-}
-
-#yesBtn {
-    background-color: #d64434;
-    color: white;
-}
-
-#noBtn {
-    background-color: white;
-    color: red;
-    transition: all 0.5s ease;
-}
-
-button:hover {
-    transform: scale(1.1);
-}
-
-/* Hearts Animation */
-.hearts {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-}
-
-.heart {
-    position: absolute;
-    color: #ff3366;
-    animation: float 3s infinite;
-    opacity: 0;
-}
-
-@keyframes float {
-    0% {
-        transform: translateY(0);
-        opacity: 0;
-    }
-
     50% {
-        opacity: 1;
+      transform: translateY(-30px);
     }
-
-    100% {
-        transform: translateY(-100px);
-        opacity: 0;
-    }
-}
-
-.hidden {
-    display: none !important;
-}
-
-/* Yay! and Image Styles */
-#yay-container {
-    display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-#yay-container img {
-    max-width: 200px;
-    height: auto;
-    margin-bottom: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-}
-
-#yay-container h2 {
-    font-size: clamp(2.5rem, 10vw, 6rem);
-    color: #ff3366;
-    margin: 0;
-}
-
-.caveat-1 {
-    font-family: "Caveat", serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-}
+  }
