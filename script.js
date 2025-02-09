@@ -1,12 +1,26 @@
 const cardFront = document.querySelector(".card-front")
 const cardBack = document.querySelector(".card")
 const noBtn = document.getElementById("noBtn");
+const yesBtn = document.getElementById("yesBtn");
+const yayContainer = document.getElementById("yay-container");
+
+
+
 let speed = 500;
 
 cardFront.addEventListener("click", () => {
     cardFront.classList.add("hide")
     cardBack.classList.remove("hide")
 })
+
+yesBtn.addEventListener('click', () => {
+    // Hide everything except the Yay! container
+    cardFront.style.display = 'none';
+    cardBack.style.display = 'none';
+    yayContainer.style.display = 'flex';
+    yayContainer.classList.remove("hide")
+    setInterval(createHeart, 300);
+});
 
 
 noBtn.addEventListener("mouseover", () => {
